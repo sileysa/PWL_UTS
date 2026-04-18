@@ -2,6 +2,14 @@
 
 namespace App\Filament\Resources\BarangModels;
 
+//use Filament\Forms;
+//use Filament\Forms\Form;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
+
+use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
+
 use App\Filament\Resources\BarangModels\Pages\CreateBarangModel;
 use App\Filament\Resources\BarangModels\Pages\EditBarangModel;
 use App\Filament\Resources\BarangModels\Pages\ListBarangModels;
@@ -25,6 +33,24 @@ class BarangModelResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return BarangModelForm::configure($schema);
+        return $schema->components([
+
+            Select::make('kategori_id')
+                ->relationship('kategori', 'kategori_nama')
+                ->required(),
+
+            TextInput::make('barang_kode')->required(),
+            TextInput::make('barang_nama')->required(),
+
+            TextInput::make('harga_beli')
+                ->numeric()
+                ->required(),
+
+            TextInput::make('harga_jual')
+                ->numeric()
+                ->required(),
+        ]);
+    
     }
 
     public static function table(Table $table): Table
