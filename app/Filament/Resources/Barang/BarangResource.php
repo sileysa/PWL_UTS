@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\BarangModels;
+namespace App\Filament\Resources\Barang;
 
 //use Filament\Forms;
 //use Filament\Forms\Form;
@@ -10,21 +10,21 @@ use Filament\Forms\Components\Select;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 
-use App\Filament\Resources\BarangModels\Pages\CreateBarangModel;
-use App\Filament\Resources\BarangModels\Pages\EditBarangModel;
-use App\Filament\Resources\BarangModels\Pages\ListBarangModels;
-use App\Filament\Resources\BarangModels\Schemas\BarangModelForm;
-use App\Filament\Resources\BarangModels\Tables\BarangModelsTable;
-use App\Models\BarangModel;
+use App\Filament\Resources\BarangModels\Pages\CreateBarang;
+use App\Filament\Resources\BarangModels\Pages\EditBarang;
+use App\Filament\Resources\BarangModels\Pages\ListBarang;
+use App\Filament\Resources\BarangModels\Schemas\BarangForm;
+use App\Filament\Resources\BarangModels\Tables\BarangTable;
+use App\Models\Barang;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
-class BarangModelResource extends Resource
+class BarangResource extends Resource
 {
-    protected static ?string $model = BarangModel::class;
+    protected static ?string $model = Barang::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
@@ -32,7 +32,7 @@ class BarangModelResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return BarangModelForm::configure($schema);
+        return BarangForm::configure($schema);
         return $schema->components([
 
             Select::make('kategori_id')
@@ -55,7 +55,7 @@ class BarangModelResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return BarangModelsTable::configure($table);
+        return BarangTable::configure($table);
     }
 
     public static function getRelations(): array
@@ -68,9 +68,9 @@ class BarangModelResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListBarangModels::route('/'),
-            'create' => CreateBarangModel::route('/create'),
-            'edit' => EditBarangModel::route('/{record}/edit'),
+            'index' => ListBarang::route('/'),
+            'create' => CreateBarang::route('/create'),
+            'edit' => EditBarang::route('/{record}/edit'),
         ];
     }
 }
