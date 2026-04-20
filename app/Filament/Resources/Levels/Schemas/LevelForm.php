@@ -12,8 +12,13 @@ class LevelForm
         return $schema
             ->components([
                 TextInput::make('level_kode')
+                    ->label('Kode Level')
+                    ->maxLength(10)
+                    ->unique(ignoreRecord: true)
                     ->required(),
                 TextInput::make('level_nama')
+                    ->label('Nama Level')
+                    ->maxLength(100)
                     ->required(),
             ]);
     }
