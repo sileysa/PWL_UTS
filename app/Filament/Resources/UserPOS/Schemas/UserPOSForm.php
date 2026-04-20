@@ -17,7 +17,7 @@ class UserPOSForm
                 Select::make('level_id')
                     ->label('Level')
                     ->options(Level::all()->pluck('level_nama', 'level_id'))
-                    ->relationship('level', 'level_id')
+                    //->relationship('level', 'level_id')
                     ->required()
                     ->searchable(),
                 TextInput::make('username')

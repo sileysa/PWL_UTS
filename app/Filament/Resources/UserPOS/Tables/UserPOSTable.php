@@ -47,10 +47,15 @@ class UserPOSTable
                 SelectFilter::make('level_id')
                     ->label('Filter Level')
                     ->options(Level::all()->pluck('level_nama', 'level_id'))
-                    ->relationship('level', 'level_id'),
+                    //->relationship('level', 'level_id'),
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()
+                    ->label('Edit')
+                    ->icon('heroicon-o-pencil'),
+                DeleteBulkAction::make()
+                    ->label('Delete')
+                    ->icon('heroicon-o-trash'),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
