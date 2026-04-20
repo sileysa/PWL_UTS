@@ -7,6 +7,9 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use App\Models\Barang;
+use App\Models\Kategori;
+use Filament\Tables\Filters\SelectFilter;
 
 class BarangsTable
 {
@@ -14,23 +17,36 @@ class BarangsTable
     {
         return $table
             ->columns([
-                TextColumn::make('kategori.kategori_id')
+                TextColumn::make('barang_id')
+                    ->label('ID')
+                    ->sortable(),
+                TextColumn::make('kategori.kategori_nama')
+                    ->label('Kategori')
+                    ->sortable()
                     ->searchable(),
                 TextColumn::make('barang_kode')
+                    ->label('Kode Barang')
+                    ->sortable()
                     ->searchable(),
                 TextColumn::make('barang_nama')
+                    ->label('Nama Barang')
+                    ->sortable()
                     ->searchable(),
                 TextColumn::make('harga_beli')
+                    ->label('Harga Beli')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('harga_jual')
+                    ->label('Harga Jual')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('created_at')
+                    ->label('Dibuat Pada')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
+                    ->label('Diperbarui Pada')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -39,7 +55,12 @@ class BarangsTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()
+                    ->label('Edit')
+                    ->icon('heroicon-o-pencil'),
+                DeleteBulkAction::make()
+                    ->label('Delete')
+                    ->icon('heroicon-o-trash'),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
