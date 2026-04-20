@@ -33,7 +33,12 @@ class SuppliersTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()
+                    ->label('Edit')
+                    ->icon('heroicon-o-pencil'),
+                DeleteBulkAction::make()
+                    ->label('Delete')
+                    ->icon('heroicon-o-trash'),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
