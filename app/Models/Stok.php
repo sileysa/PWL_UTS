@@ -12,7 +12,7 @@ class Stok extends Model
     protected $fillable = ['supplier_id', 'barang_id', 'user_id', 'stok_tanggal', 'stok_jumlah'];
 
     protected $casts = [
-        'stok_tanggal' => 'dateTime',
+        'stok_tanggal' => 'datetime',
     ];
 
     public function supplier(): BelongsTo

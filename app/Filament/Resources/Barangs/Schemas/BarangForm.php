@@ -30,11 +30,15 @@ class BarangForm
                 TextInput::make('harga_beli')
                     ->label('Harga Beli')
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->prefix('Rp. ')
+                    ->minValue(0),
                 TextInput::make('harga_jual')
                     ->label('Harga Jual')
                     ->required()
-                    ->numeric(),
-            ]);
+                    ->numeric()
+                    ->prefix('Rp. ')
+                    ->minValue(0),
+            ])->columns(2);
     }
 }

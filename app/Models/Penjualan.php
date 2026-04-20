@@ -13,7 +13,7 @@ class Penjualan extends Model
     protected $fillable = ['user_id', 'pembeli', 'penjualan_kode', 'penjualan_tanggal'];
 
     protected $casts = [
-        'penjualan_tanggal' => 'dateTime',
+        'penjualan_tanggal' => 'datetime',
     ];
 
     public function user(): BelongsTo

@@ -34,11 +34,11 @@ class BarangsTable
                     ->searchable(),
                 TextColumn::make('harga_beli')
                     ->label('Harga Beli')
-                    ->numeric()
+                    ->money('IDR')
                     ->sortable(),
                 TextColumn::make('harga_jual')
                     ->label('Harga Jual')
-                    ->numeric()
+                    ->money('IDR')
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->label('Dibuat Pada')

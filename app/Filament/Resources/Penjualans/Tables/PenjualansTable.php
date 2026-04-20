@@ -17,7 +17,7 @@ use App\Models\Kategori;
 use App\Models\Level;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\DateTime;
 use Filament\Schemas\Schema;
 
 class PenjualansTable
@@ -43,16 +43,16 @@ class PenjualansTable
                     ->searchable(),
                 TextColumn::make('penjualan_tanggal')
                     ->label('Tanggal Penjualan')
-                    ->dateTimePicker('d M Y H:i')
+                    ->dateTime('d M Y H:i')
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->label('Dibuat Pada')
-                    ->dateTimePicker('d M Y H:i')
+                    ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
                     ->label('Diperbarui Pada')
-                    ->dateTimePicker('d M Y H:i')
+                    ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
