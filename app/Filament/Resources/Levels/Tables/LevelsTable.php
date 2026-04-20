@@ -14,16 +14,25 @@ class LevelsTable
     {
         return $table
             ->columns([
+                TextColumn::make('level_id')
+                    ->label('ID')
+                    ->sortable(),
                 TextColumn::make('level_kode')
-                    ->searchable(),
+                    ->label('Kode Level')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('level_nama')
-                    ->searchable(),
+                    ->label('Nama Level')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('created_at')
-                    ->dateTime()
+                    ->label('Dibuat Pada')
+                    ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->label('Diperbarui Pada')
+                    ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
