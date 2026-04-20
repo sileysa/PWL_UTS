@@ -14,18 +14,29 @@ class SuppliersTable
     {
         return $table
             ->columns([
+                TextColumn::make('supplier_id')
+                    ->label('ID')
+                    ->sortable(),
                 TextColumn::make('supplier_kode')
-                    ->searchable(),
+                    ->label('Kode Supplier')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('supplier_nama')
-                    ->searchable(),
+                    ->label('Nama Supplier')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('supplier_alamat')
+                    ->label('Alamat Supplier')
+                    ->limit(50)
                     ->searchable(),
                 TextColumn::make('created_at')
-                    ->dateTime()
+                    ->label('Dibuat Pada')
+                    ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->label('Diperbarui Pada')
+                    ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])

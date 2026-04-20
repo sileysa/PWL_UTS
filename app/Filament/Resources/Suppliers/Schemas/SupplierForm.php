@@ -23,7 +23,6 @@ class SupplierForm
                 TextInput::make('supplier_alamat')
                     ->label('Alamat Supplier')
                     ->maxLength(255)
-                    ->rows(3)
                     ->required(),
             ]);
     }
