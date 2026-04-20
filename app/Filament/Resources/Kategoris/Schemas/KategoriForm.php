@@ -12,8 +12,13 @@ class KategoriForm
         return $schema
             ->components([
                 TextInput::make('kategori_kode')
+                    ->label('Kode Kategori')
+                    ->maxLength(10)
+                    ->unique(ignoreRecord: true)
                     ->required(),
                 TextInput::make('kategori_nama')
+                    ->label('Nama Kategori')
+                    ->maxLength(100)
                     ->required(),
             ]);
     }
