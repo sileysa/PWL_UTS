@@ -7,6 +7,8 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Tables\Filters\SelectFilter;
+use App\Models\Level;
 
 class UserPOSTable
 {
@@ -14,23 +16,38 @@ class UserPOSTable
     {
         return $table
             ->columns([
+                TextColumn::make('user_id')
+                    ->label('ID')
+                    ->sortable(),
                 TextColumn::make('level.level_id')
-                    ->searchable(),
+                    ->label('Level')
+                    ->sortable()
+                    ->badge()
+                    ->color('info'),
                 TextColumn::make('username')
+                    ->label('Username')
+                    ->sortable()
                     ->searchable(),
                 TextColumn::make('nama')
-                    ->searchable(),
+                    ->label('Nama')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('created_at')
-                    ->dateTime()
+                    ->label('Dibuat Pada')
+                    ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->label('Diperbarui Pada')
+                    ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('level_id')
+                    ->label('Filter Level')
+                    ->options(Level::all()->pluck('level_nama', 'level_id'))
+                    ->relationship('level', 'level_id'),
             ])
             ->recordActions([
                 EditAction::make(),
