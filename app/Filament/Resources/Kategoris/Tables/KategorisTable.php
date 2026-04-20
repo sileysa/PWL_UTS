@@ -14,16 +14,25 @@ class KategorisTable
     {
         return $table
             ->columns([
+                TextColumn::make('kategori_id')
+                    ->label('ID')
+                    ->sortable(),
                 TextColumn::make('kategori_kode')
-                    ->searchable(),
+                    ->label('Kode Kategori')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('kategori_nama')
-                    ->searchable(),
+                    ->label('Nama Kategori')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('created_at')
-                    ->dateTime()
+                    ->label('Dibuat Pada')
+                    ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->label('Diperbarui Pada')
+                    ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
