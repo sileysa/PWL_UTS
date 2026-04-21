@@ -41,7 +41,10 @@ class StoksTable
                 TextColumn::make('stok_jumlah')
                     ->label('Jumlah Stok')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->getStateUsing(fn($record) => Stok::where('barang_id', $record->barang_id)->sum('stok_jumlah'))
+                    ->badge()
+                    ->color(fn($state) => $state <= 10 ? 'danger' : ($state <= 30 ? 'warning' : 'success')),
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->dateTime('d M Y H:i')
